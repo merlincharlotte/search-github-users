@@ -9,8 +9,8 @@ export class GithubService {
 	client_secret:string;
 
 	constructor(private http:Http) {		
-		this.client_id = "ddfa83d0e7dd57eb1b49";
-		this.client_secret = "ddfcaa0ebda1951a223146a72818efefa43945e3";
+		this.client_id = "<<client_id>>";
+		this.client_secret = "<<client_secret>>";
 	}
 
 	getUserInfo(username:string) {
