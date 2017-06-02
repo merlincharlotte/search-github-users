@@ -1,0 +1,61 @@
+<div class="container">
+	<form class="well row">
+		<input type="text" name="username" [(ngModel)]="username" 
+		(keyup)="clicked()"class="form-control" placeholder="Enter Git username to search" class="col-md-10">
+		<button (click)="clicked()" class="btn btn-primary" class="col-md-2">Search </button>  
+    </form>
+</div>
+<div class="container" *ngIf="user">
+	<div class="row">
+		<div class="panel panel-default" >
+			<div class="panel-heading">
+			    <h3 class="panel-title">{{user.name}}</h3>
+			</div>
+			<div class="panel-body">
+			    <div class="row">
+			    	<div class="col-md-4">
+	    				<a href="#" class="thumbnail">
+	      					<img src={{user.avatar_url}}>
+	   					</a>
+	   					<a href={{user.html_url}} target="_blank" class="btn btn-block btn-primary">Go to Profile</a>
+    				</div>
+			    	<div class="col-md-8">
+				    	<ul>
+					    	<li>{{user.name || "Not Available"}}</li>
+					    	<li>{{user.location || "Not Available"}}</li>
+					    	<li>{{user.company || "Not Available"}}</li>
+					    	<li>{{user.following || "Not Available"}}</li>
+					    	<li>{{user.type || "Not Available"}}</li>
+					    	<li>{{user.updated_at || "Not Available"}}</li>
+				    	</ul>
+			    	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+
+<div class="container" *ngIf="repos">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		   <h3 class="panel-title">Repositories</h3>
+		</div>
+		<div class="panel-body" *ngFor="let repo of repos">
+		    <div class="row">
+		    	<ul>
+					<li>
+						<a href={{repo.html_url}} target="_blank">{{repo.name}}</a>
+					</li>
+					<li>{{repo.description || "Not available"}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" *ngIf="user">
+
+	<div class="container" *ngIf="!repos">
+		<H1>{{user.name || "This User"}}  has No Repository</H1>
+		
+	</div>
+</div>
